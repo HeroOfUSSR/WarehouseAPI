@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Warehouse.Domain.Exceptions;
 
 namespace Warehouse.Domain.Models
 {
@@ -10,14 +11,14 @@ namespace Warehouse.Domain.Models
     {
         public Guid Id { get; private set; }
         public Guid ProductId { get; private set; }
-        public Guid WarehouseId { get; private set; }
+        public Guid StorehouseId { get; private set; }
         public int Quantity { get; private set; }
         public int MinQuantity { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 
         private StockItem() { }
 
-        public StockItem(Guid productId, Guid warehouseId, int initialQuantity = 0, int minQuantity = 0)
+        public StockItem(Guid productId, Guid storehouseId, int initialQuantity = 0, int minQuantity = 0)
         {
             if (initialQuantity < 0)
                 throw new ArgumentException("Начальное количество не может быть отрицательным", nameof(initialQuantity));
@@ -27,7 +28,7 @@ namespace Warehouse.Domain.Models
 
             Id = Guid.NewGuid();
             ProductId = productId;
-            WarehouseId = warehouseId;
+            StorehouseId = storehouseId;
             Quantity = initialQuantity;
             MinQuantity = minQuantity;
             UpdatedAt = DateTime.UtcNow;
@@ -48,7 +49,7 @@ namespace Warehouse.Domain.Models
                 throw new ArgumentException("Количество для списания должно быть положительным", nameof(amount));
 
             if (amount > Quantity)
-                throw new InsufficientStockException(ProductId, WarehouseId, Quantity, amount);
+                throw new InsufficientStockException(ProductId, StorehouseId, Quantity, amount);
 
             Quantity -= amount;
             UpdatedAt = DateTime.UtcNow;

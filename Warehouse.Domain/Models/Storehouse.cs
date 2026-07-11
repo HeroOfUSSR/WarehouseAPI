@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Models
 {
-    public class Warehouse
+    public class Storehouse
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string? Address { get; private set; }
         public bool IsActive { get; private set; }
 
-        private Warehouse() { }
+        private Storehouse() { }
 
-        public Warehouse(string name, string? address = null)
+        public Storehouse(string name, string? address = null)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Name не может быть пустым", nameof(name));
