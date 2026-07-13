@@ -9,9 +9,9 @@ using Warehouse.Domain.Models;
 
 namespace Warehouse.Infrastructure
 {
-    public class AppDbContext : DbContext
+    public class WarehouseDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public WarehouseDbContext(DbContextOptions<WarehouseDbContext> options) : base(options) { }
 
         public DbSet<Product> Products => Set<Product>();
         public DbSet<Storehouse> Warehouses => Set<Storehouse>();
@@ -21,7 +21,7 @@ namespace Warehouse.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(WarehouseDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
     }

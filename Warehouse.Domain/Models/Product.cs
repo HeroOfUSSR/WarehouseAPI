@@ -15,7 +15,7 @@ namespace Warehouse.Domain.Models
         public UnitOfMeasure Unit { get; private set; }
         public bool IsActive { get; private set; }
 
-        private Product() { } // для EF Core
+        private Product() { } 
 
         public Product(string sku, string name, UnitOfMeasure unit, string? description = null)
         {
