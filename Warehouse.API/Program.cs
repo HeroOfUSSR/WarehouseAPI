@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Warehouse.Application.Interfaces;
+using Warehouse.Application.Services;
 using Warehouse.Infrastructure;
+using Warehouse.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,16 @@ builder.Services.AddDbContext<WarehouseDbContext>(
     {
         options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(WarehouseDbContext)));
     });
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IStorehouseRepository, StorehouseRepository>();
+builder.Services.AddScoped<IStockItemRepository, StockItemRepository>();
+builder.Services.AddScoped<IMovementRepository, MovementRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<StorehouseService>();
 
 var app = builder.Build();
 

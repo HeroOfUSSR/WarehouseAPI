@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warehouse.Application;
+using Warehouse.Application.Interfaces;
 
 namespace Warehouse.Infrastructure
 {

@@ -1,4 +1,4 @@
-﻿namespace Warehouse.Application
+﻿namespace Warehouse.Application.Interfaces
 {
     public interface IUnitOfWork
     {

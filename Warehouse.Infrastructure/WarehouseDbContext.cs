@@ -14,7 +14,7 @@ namespace Warehouse.Infrastructure
         public WarehouseDbContext(DbContextOptions<WarehouseDbContext> options) : base(options) { }
 
         public DbSet<Product> Products => Set<Product>();
-        public DbSet<Storehouse> Warehouses => Set<Storehouse>();
+        public DbSet<Storehouse> Storehouses => Set<Storehouse>();
         public DbSet<StockItem> StockItems => Set<StockItem>();
         public DbSet<Movement> Movements => Set<Movement>();
         public DbSet<AppUser> Users => Set<AppUser>();
