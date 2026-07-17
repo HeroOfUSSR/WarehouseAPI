@@ -85,6 +85,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<StorehouseService>();
+builder.Services.AddScoped<StockOperationService>();
 
 var app = builder.Build();
 
