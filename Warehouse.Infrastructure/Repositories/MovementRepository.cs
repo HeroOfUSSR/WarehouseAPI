@@ -32,10 +32,16 @@ namespace Warehouse.Infrastructure.Repositories
                     m.SourceStorehouseId == storehouseId || m.DestinationStorehouseId == storehouseId);
 
             if (from.HasValue)
-                query = query.Where(m => m.CreatedAt >= from);
+            {
+                var fromUtc = DateTime.SpecifyKind(from.Value, DateTimeKind.Utc);
+                query = query.Where(m => m.CreatedAt >= fromUtc);
+            }
 
             if (to.HasValue)
-                query = query.Where(m => m.CreatedAt <= to);
+            {
+                var toUtc = DateTime.SpecifyKind(to.Value, DateTimeKind.Utc);
+                query = query.Where(m => m.CreatedAt <= toUtc);
+            }
 
             return await query
                 .OrderByDescending(m => m.CreatedAt)

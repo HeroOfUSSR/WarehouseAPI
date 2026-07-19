@@ -12,7 +12,7 @@ namespace Warehouse.API.Controllers
         public StockOperationController(StockOperationService stockOperationService) => _stockOperationService = stockOperationService;
 
         // Временная заглушка вместо реального userId из токена - уберу когда роли настрою
-        private static readonly Guid TempUserId = Guid.Parse("00000000-0000-0000-0000-000000000001");
+        private static readonly Guid TempUserId = Guid.Parse("b51c6ed4-59f2-4639-80a4-1534aedfb26d");
 
         [HttpPost("receive")]
         public async Task<IActionResult> Receive([FromBody] ReceiveRequest request, CancellationToken ct)
