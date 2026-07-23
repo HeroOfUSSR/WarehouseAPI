@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class ProductNotFoundException : NotFoundException
+    public abstract class UnauthorizedDomainException : DomainException
     {
-        public ProductNotFoundException(Guid id) : base($"Товар {id} не найден") { }
+        protected UnauthorizedDomainException(string message) : base(message) { }
     }
 }

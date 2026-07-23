@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class DuplicateEmailException : Exception
+    public class DuplicateEmailException : ConflictException
     {
         public DuplicateEmailException(string email) : base($"Пользователь с email '{email}' уже существует") { }
     }

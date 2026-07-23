@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class InsufficientStockException : Exception
+    public class InsufficientStockException : ConflictException
     {
         public Guid ProductId { get; }
         public Guid WarehouseId { get; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class DuplicateSkuException : Exception
+    public class DuplicateSkuException : ConflictException
     {
         public DuplicateSkuException(string sku) : base($"Товар с артикулом '{sku}' уже существует") { }
     }

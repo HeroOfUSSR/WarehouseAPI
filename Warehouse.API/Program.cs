@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Warehouse.API.Middleware;
 using Warehouse.Application.Interfaces;
 using Warehouse.Application.Services;
 using Warehouse.Infrastructure;
@@ -88,7 +89,12 @@ builder.Services.AddScoped<StockService>();
 builder.Services.AddScoped<StorehouseService>();
 builder.Services.AddScoped<StockOperationService>();
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

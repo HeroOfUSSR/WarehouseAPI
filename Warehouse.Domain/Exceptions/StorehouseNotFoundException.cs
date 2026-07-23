@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class StorehouseNotFoundException : Exception
+    public class StorehouseNotFoundException : NotFoundException
     {
         public StorehouseNotFoundException(Guid id) : base($"Склад {id} не найден") { }
     }

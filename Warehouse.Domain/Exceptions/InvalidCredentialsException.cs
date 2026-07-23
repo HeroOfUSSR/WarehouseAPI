@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class InvalidCredentialsException : Exception
+    public class InvalidCredentialsException : UnauthorizedDomainException
     {
         public InvalidCredentialsException() : base("Неверный email или пароль") { }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warehouse.Domain.Exceptions
 {
-    public class StockItemNotFoundException : Exception
+    public class StockItemNotFoundException : NotFoundException
     {
         public Guid ProductId { get; }
         public Guid StorehouseId { get; }
