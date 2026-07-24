@@ -1,9 +1,12 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Warehouse.API.Filters;
 using Warehouse.API.Middleware;
+using Warehouse.API.Validation;
 using Warehouse.Application.Interfaces;
 using Warehouse.Application.Services;
 using Warehouse.Infrastructure;
@@ -14,7 +17,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateProductRequestValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<TransferRequestValidation>();
+
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ValidationFilter>();
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
